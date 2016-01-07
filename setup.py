@@ -6,5 +6,5 @@ setup(
 	py_modules=['pretty_repr'],
 	author='Bartek Brak', 
 	author_email='bartek.rychlicki@gmail.com',
-	install_requires=['Pygments==2.0.2']
+	install_requires=['Pygments']
 )
