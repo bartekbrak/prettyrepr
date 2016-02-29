@@ -1,12 +1,16 @@
-# Prettyrepr WIP
+# Prettyrepr
 
 A collection of `__repr__` functions utilizing colours and indentation so your debug sessions give you less headeache.
 
-This is not a production code, don't expect stability or completeness, however this library will make your life easier.
+This is not exactly production code, don't expect stability or completeness,
+however this library will make your life easier.
 # How to install and use
 
 ```
+# Straight from the oven, freshest
 pip install --upgrade git+git://github.com/bartekbrak/prettyrepr.git
+# Easier, stabler but not always fresher.
+pip install pretty-repr
 ```
 
 ### django

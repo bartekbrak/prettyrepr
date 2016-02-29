@@ -21,9 +21,21 @@ def mongo_repr(obj, **kwargs):
     return the_repr(obj, obj._fields_ordered, **kwargs)
 
 
-def django_repr(obj):
-    fields = [_ for _ in obj.__dict__.keys() if _ != '_state']
-    return highlight_python(the_repr(obj, fields))
+def django_repr(obj, **kwargs):
+    # _.startswith('_') is not very clever but I have not found a useful
+    # field there and they do create problem that I don't want to solve
+    # yet: such field sometimes contains another model instance which
+    # is already pretty-repr'ed, highlighting it a second time creates
+    # a mess, solution: now - just strip'em, future detect where in
+    # structure an object is and only color the topmost, is that even
+    # possible
+    fields = [_ for _ in obj.__dict__.keys() if not _.startswith('_')]
+    return highlight_python(the_repr(obj, fields, **kwargs))
+
+
+def indented_django_repr(obj):
+    # what adds the \n that rstrip removes? Check get_lexer_by_name(ensurenl
+    return django_repr(obj, format_='%s(\n\t%s\n)', indenter='\n\t').rstrip()
 
 
 def informal_repr(obj, fields=None):
