@@ -29,7 +29,7 @@ def django_repr(obj, **kwargs):
     # a mess, solution: now - just strip'em, future detect where in
     # structure an object is and only color the topmost, is that even
     # possible
-    fields = [_ for _ in obj.__dict__.keys() if not _.startswith('_')]
+    fields = [_ for _ in sorted(obj.__dict__.keys()) if not _.startswith('_')]
     return highlight_python(the_repr(obj, fields, **kwargs))
 
 
