@@ -7,5 +7,5 @@ setup(
     author='Bartek Brak',
     author_email='bartek0brak@gmail.com',
     install_requires=['Pygments'],
-    url='https://github.com/bartekbrak/bowerbird',
+    url='https://github.com/bartekbrak/prettyrepr',
 )
