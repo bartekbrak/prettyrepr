@@ -1,3 +1,4 @@
+import functools
 import os
 from pygments import highlight
 from pygments.formatters.terminal256 import Terminal256Formatter
@@ -8,11 +9,23 @@ python_lexer = get_lexer_by_name("python", stripall=True)
 style = os.getenv('PRETTYREPR_STYLE', 'monokai')
 
 
+# https://stackoverflow.com/a/31174427/1472229
+
+sentinel = object()
+def rgetattr(obj, attr, default=sentinel):
+    if default is sentinel:
+        _getattr = getattr
+    else:
+        def _getattr(obj, name):
+            return getattr(obj, name, default)
+    return functools.reduce(_getattr, [obj]+attr.split('.'))
+
+
 def the_repr(obj, fields, format_='%s(%s)', indenter=' '):
     # a repr that tells you as much as possible, in accordance with
     # https://docs.python.org/2/library/functions.html#repr
     attributes = [
-        '%s=%r' % (field, getattr(obj, field))
+        '%s=%r' % (field, rgetattr(obj, field))
         for field in fields
     ]
     cls = '%s' % obj.__class__.__name__
