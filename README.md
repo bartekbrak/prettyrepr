@@ -29,9 +29,12 @@ models.Model.__repr__ = prettyrepr.django_repr
 # todo
 - tests, tox
 - more use cases
+- indent according to level of recursion
 
 Changelog
-- 2018.03.08.02:
+- 2018.03.08.3:
+    - declutter colour
+- 2018.03.08.2:
     -  support recursive dotted attr notation like `'user.email'`
 - 2018.03.08:
     - rename to prettyrepr, no dashes, no underscores
