@@ -5,6 +5,8 @@ A collection of `__repr__` functions utilizing colours and indentation so your d
 This is not exactly production code, don't expect stability or completeness,
 however this library will make your life easier.
 
+![example](example.png?raw=true)
+
 
 # Install
 
